@@ -41,7 +41,7 @@ this.getTodos = this.getTodos.bind(this)
     render(){
         let todos = Object.keys(this.state).map(name => {
             return (
-                <div style={{ margin: "25px"}} >
+                <div style={{ margin: "25px", width: "25%"}} >
                     <div style={{ backgroundColor: `${colors[name]}` }}>{name}</div>
                         <TodoItem 
                             myLists={this.state[name]}/>
@@ -52,7 +52,7 @@ this.getTodos = this.getTodos.bind(this)
               
         return (
 
-            <div style={{display: "flex", flexDirection:"row"}}>{todos}</div>
+            <div style={{display: "flex", flexDirection:"row", width: "1000px", }}>{todos}</div>
         )
 
     }

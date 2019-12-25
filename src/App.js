@@ -6,7 +6,7 @@ import Todos from './todos'
 function App() {
 
   return (
-<div>
+<div style={{width: "100%"}}>
 
   <Todos/>
 </div>
