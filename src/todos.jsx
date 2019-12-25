@@ -23,7 +23,7 @@ class Todos extends React.Component{
         
         }
 
-this.getTodos = this.getTodos.bind(this)
+// this.getTodos = this.getTodos.bind(this)
 
     }
 
