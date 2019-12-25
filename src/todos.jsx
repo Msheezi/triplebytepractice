@@ -9,26 +9,23 @@ const colors= {
     George: "#E8741E"
 }
 
+const initialState = {
+    Winnie: ["Make decision on offers", "Call Mike back"],
+    Bob: ["Pay Rent", "Call Mom", "Eat Lunch"],
+    Thomas: ["Pickup Eggs", "Drop off drycleaning"],
+    George: ["Make more lists", "Check things off list"]
+}
+
 class Todos extends React.Component{
     constructor(props){
         super(props)
 
-        this.state = { 
-
-            
-                 Winnie: ["test", "test2"],
-                 Bob: ["test", "test2"],
-                 Thomas: ["test", "test2"],
-                 George: ["test", "test2"]
-        
-        }
-
-// this.getTodos = this.getTodos.bind(this)
-
+        this.state =  initialState
+                 
     }
 
     getTodos(name) {
-        let values = prompt("enter Todo")
+        let values = prompt("enter Todo") // get a due date, check to complete
         let newTodos = this.state[name]
         console.log(newTodos)
         newTodos.push(values)
@@ -41,18 +38,34 @@ class Todos extends React.Component{
     render(){
         let todos = Object.keys(this.state).map(name => {
             return (
-                <div style={{ margin: "25px", width: "25%"}} >
-                    <div style={{ backgroundColor: `${colors[name]}` }}>{name}</div>
+                <div style={{ marginRight: "25px", width: "25%", backgroundColor: "lightgray", border: "1px solid black"}} >
+                    <div style={{ backgroundColor: `${colors[name]}`, color: "white", textAlign: "center", borderRadius: "3px", position: "relative" }}>{name}</div>
                         <TodoItem 
                             myLists={this.state[name]}/>
-                            <button onClick={()=> this.getTodos(name)}>Add Todo</button>
+                            <button style={{width: "100%", 
+                            backgroundColor: "white", 
+                            alignSelf: "end",
+                            // color: "white"
+                            borderRadius: "3px",
+                        }} 
+                            onClick={()=> this.getTodos(name)}
+                            
+                            >Add Todo
+                            </button>
                 </div>
             )
         })
               
         return (
 
-            <div style={{display: "flex", flexDirection:"row", width: "1000px", }}>{todos}</div>
+            <div style={{
+                display: "flex", 
+                flexDirection:"row", 
+                width: "1000px",
+                
+                textAlign:"center" }}
+                >{todos}
+            </div>
         )
 
     }
