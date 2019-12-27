@@ -1,7 +1,8 @@
-import React from 'react'
+import React from "react";
 
- const TodoItem = ({myLists}) => myLists.map(item => <div style={{textAlign:"center", }}>{item}</div>)
- 
+const TodoItem = ({ myLists }) =>
+  myLists.map(item => (
+    <div style={{ borderBottom: "1px solid black" }}>{item}</div>
+  ));
 
-
-export default TodoItem
+export default TodoItem;
