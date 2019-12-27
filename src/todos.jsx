@@ -67,7 +67,8 @@ class Todos extends React.Component {
               // color: "white"
               borderRadius: "3px",
               position: "absolute",
-              bottom: "0px"
+              bottom: "0px",
+              marginTop:"0px"
             }}
             onClick={() => this.getTodos(name)}
           >
