@@ -1,28 +1,32 @@
-import React from 'react'
-import {TodoList} from './todoItem'
+
+import React from "react";
+import TodoItem from "./todoItem";
 
 
-const colors= {
-    Winnie: "#8E6E95",
-    Bob: "#39A59C",
-    Thomas: "#344759",
-    George: "#E8741E"
-}
+const colors = {
+  Winnie: "#8E6E95",
+  Bob: "#39A59C",
+  Thomas: "#344759",
+  George: "#E8741E"
+};
 
 const initialState = {
-    Winnie: ["Make decision on offers", "Call Mike back"],
-    Bob: ["Pay Rent", "Call Mom", "Eat Lunch"],
-    Thomas: ["Pickup Eggs", "Drop off drycleaning"],
-    George: ["Make more lists", "Check things off list"]
-}
+  Winnie: ["Make decision on offers", "Call Mike back"],
+  Bob: ["Pay Rent", "Call Mom", "Eat Lunch"],
+  Thomas: ["Pickup Eggs", "Drop off drycleaning"],
+  George: ["Make more lists", "Check things off list"]
+};
 
-class Todos extends React.Component{
-    constructor(props){
-        super(props)
+class Todos extends React.Component {
+  constructor(props) {
+    super(props);
 
-        this.state = initialState
+    this.state = initialState;
+  }
 
-    }
+       
+
+    
 
     addTodo(name){
         let newTodo = prompt("Enter Your New Item")
@@ -32,31 +36,73 @@ class Todos extends React.Component{
     }
 
 
-    render() {
+   render() {
+    let todos = Object.keys(this.state).map(name => {
+      return (
+        <div
+          style={{
+            marginRight: "25px",
+            width: "25%",
+            backgroundColor: "white",
+            border: "1px solid black",
+            borderRadius: "3px",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            position: "relative",
+            paddingBottom: "30px"
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: `${colors[name]}`,
+              color: "white",
+              textAlign: "center",
+              borderBottom: "1px solid black"
+            }}
+          >
+            {name}
+          </div>
+          <TodoItem myLists={this.state[name]} />
+          <button
+            style={{
+              width: "100%",
+              height: "25px",
+              backgroundColor: "white",
+              justifySelf: "flex-end",
+              // color: "white"
+              borderRadius: "3px",
+              position: "absolute",
+              bottom: "0px"
+            }}
+            onClick={() => this.addTodo(name)}
+          >
+            Add Todo
+          </button>
+        </div>
+      );
+    });
 
-        let todos = Object.keys(this.state).map(name=> {
-            return (
-                <div style={{marginLeft: "25px", textAlign: "center"}}>
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          width: "1000px",
 
-                     <div style={{backgroundColor: `${colors[name]}`}}>{name}</div>
-                     <TodoList 
-                        todoList={this.state[name]}/>
-                        <button style={{width: "100%"}}onClick={()=> this.addTodo(name)}>Add Item</button>
-                </div>
-            )
-        })
-        return (
-
-        <div style={{display: "flex"}}>{todos}</div>
-        )
-        
-
-
-    }
+          textAlign: "center"
+        }}
+      >
+        {todos}
+      </div>
+    );
+  }
 }
 
 
 
 
 
-export default Todos
+
+export default Todos;
+

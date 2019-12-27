@@ -1,15 +1,10 @@
-import React from 'react'
+import React from "react";
 
 
-export const TodoList = ({todoList}) => {
-    let lists = todoList.map(todo => {
-    return <div>{todo}</div>
-    })
+const TodoItem = ({ myLists }) =>
+  myLists.map(item => (
+    <div style={{ borderBottom: "1px solid black" }}>{item}</div>
+  ));
 
+export default TodoItem;
 
-
-    return (
-    <div>{lists}</div>
-
-    )
-}
